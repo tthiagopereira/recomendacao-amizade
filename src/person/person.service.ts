@@ -3,6 +3,7 @@ import { CreatePersonDto } from './dto/create-person.dto';
 import {CreateRelationshipDto} from "./dto/create-relationship.dto";
 import {PersonRepository} from "./repositories/person.repository";
 import {CreateRecomendationDto} from "./dto/create-recomendation.dto";
+import {relationshipsGrafo} from "./mocks/persons";
 
 @Injectable()
 export class PersonService {
@@ -67,9 +68,10 @@ export class PersonService {
 
     const { cpf } = recomendationDto;
 
-    this.personRepository.findOne(cpf);
+    this.findOne(cpf);
     const myFriends = this.myFriends(cpf)
     const friendsOfFriends = this.friendsOfFriends(myFriends, cpf);
+    this.grafoFriend(cpf);
     return this.relatedFriends(friendsOfFriends);
 
   }
@@ -141,5 +143,18 @@ export class PersonService {
     })
 
     return accountFriends.map((item) => item.cpf);
+  }
+
+  grafoFriend(cpf: string) {
+    const relationships = this.personRepository.findAllRelationsGrafo();
+    console.log(relationships)
+    console.log(`CPF: ${cpf}`)
+    console.log(relationships[4][1])
+    console.log('matriz')
+
+    for (let j =0; j <relationships.length; j++) {
+      doS
+    }
+
   }
 }
