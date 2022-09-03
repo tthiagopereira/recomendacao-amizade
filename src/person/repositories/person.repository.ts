@@ -37,7 +37,7 @@ export class PersonRepository {
         return this.relationships;
     }
 
-    findAllRelationsGrafo() {
+     findAllRelationsGrafo() {
         return relationshipsGrafo();
     }
 }

@@ -152,9 +152,5 @@ export class PersonService {
     console.log(relationships[4][1])
     console.log('matriz')
 
-    for (let j =0; j <relationships.length; j++) {
-      doS
-    }
-
   }
 }
