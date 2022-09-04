@@ -71,7 +71,6 @@ export class PersonService {
     this.findOne(cpf);
     const myFriends = this.myFriends(cpf)
     const friendsOfFriends = this.friendsOfFriends(myFriends, cpf);
-    this.grafoFriend(cpf);
     return this.relatedFriends(friendsOfFriends);
 
   }
@@ -145,12 +144,4 @@ export class PersonService {
     return accountFriends.map((item) => item.cpf);
   }
 
-  grafoFriend(cpf: string) {
-    const relationships = this.personRepository.findAllRelationsGrafo();
-    console.log(relationships)
-    console.log(`CPF: ${cpf}`)
-    console.log(relationships[4][1])
-    console.log('matriz')
-
-  }
 }
