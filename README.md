@@ -10,6 +10,10 @@
 ```bash
 $ docker-compose up
 $ npm test:cov
+or
+$ npm install
+$ npm test:cov
+$ npm run start:dev
 ```
 ### Linux - docker
  -   chmod +x .docker/entrypoint.sh 
