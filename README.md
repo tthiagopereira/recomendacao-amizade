@@ -9,12 +9,14 @@
 
 ```bash
 $ docker-compose up
-
+$ npm test:cov
 ```
 ### Linux - docker
  -   chmod +x .docker/entrypoint.sh 
 
 # urls
+### SWAGGER
+- GET - http://localhost:3000/api
 ### Person
  - GET - http://localhost:3000/person
 ```
