@@ -3,7 +3,6 @@ import { CreatePersonDto } from './dto/create-person.dto';
 import {CreateRelationshipDto} from "./dto/create-relationship.dto";
 import {PersonRepository} from "./repositories/person.repository";
 import {CreateRecomendationDto} from "./dto/create-recomendation.dto";
-import {relationshipsGrafo} from "./mocks/persons";
 
 @Injectable()
 export class PersonService {

@@ -2,46 +2,86 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
 ```bash
-$ npm install
+$ docker-compose up
+
 ```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
 ### Linux - docker
  -   chmod +x .docker/entrypoint.sh 
+
+# urls
+### Person
+ - GET - http://localhost:3000/person
+```
+    [
+	{
+		"cpf": "11111111111",
+		"name": "A"
+	},
+	{
+		"cpf": "22222222222",
+		"name": "B"
+	},
+]
+```
+ - POST - http://localhost:3000/person
+```
+body
+
+{
+	"cpf": "66666666666",
+	"name": "F"
+}
+
+return 
+
+{
+	"cpf": "66666666666",
+	"name": "F"
+}
+```
+ - GET - http://localhost:3000/person/11111111111
+```
+{
+	"cpf": "11111111111",
+	"name": "A"
+}
+```
+ - DELETE - http://localhost:3000/person/clean
+```
+    return status 204 no content
+```
+
+# Relation ship && recommendations
+## urls
+
+- POST - http://localhost:3000/relationship
+```
+{
+	"cpf1": "77777777777",
+	"cpf2": "22222222222"
+}
+
+return 
+
+status: 200 ok
+```
+
+- GET - http://localhost:3000/recommendations/11111111111
+```
+[
+	"77777777777",
+	"44444444444",
+	"55555555555",
+	"66666666666"
+]
+
+return 
+
+status: 200 ok
+```

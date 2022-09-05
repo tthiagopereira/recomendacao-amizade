@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PersonService } from './person.service';
-import {HttpException, NotFoundException} from "@nestjs/common";
+import {HttpException} from "@nestjs/common";
 import {persons} from "./mocks/persons";
+import {PersonRepository} from "./repositories/person.repository";
 
 type MockRepository<T = any> = Partial<Record<any, jest.Mock>>;
 
@@ -11,10 +12,11 @@ const createMockRepository = <T = any>(): MockRepository<T> => ({
 
 describe('PersonService', () => {
   let service: PersonService;
+  let repository: PersonRepository
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PersonService],
+      providers: [PersonService, PersonRepository],
     }).compile();
 
     service = module.get<PersonService>(PersonService);
@@ -117,7 +119,7 @@ describe('PersonService', () => {
         it('recommendations',  () => {
             const mock = "11111111111";
 
-            const relation = service.recommendations(mock);
+            const relation = service.recommendations({cpf: mock});
             expect(relation).toEqual([
                 "44444444444",
                 "55555555555"
@@ -127,7 +129,9 @@ describe('PersonService', () => {
             const mock = "1111111111111";
 
             try {
-                service.recommendations(mock);
+                service.recommendations({
+                    cpf: mock
+                });
             }catch (e) {
                 expect(e).toBeInstanceOf(HttpException);
             }

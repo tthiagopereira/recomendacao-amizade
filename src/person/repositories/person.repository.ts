@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {persons, relationships, relationshipsGrafo} from "../mocks/persons";
+import {persons, relationships} from "../mocks/persons";
 import {CreatePersonDto} from "../dto/create-person.dto";
 import {CreateRelationshipDto} from "../dto/create-relationship.dto";
 
@@ -37,7 +37,4 @@ export class PersonRepository {
         return this.relationships;
     }
 
-     findAllRelationsGrafo() {
-        return relationshipsGrafo();
-    }
 }
