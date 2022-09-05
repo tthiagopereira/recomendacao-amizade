@@ -20,8 +20,6 @@ export class PersonService {
     }
 
     this.personRepository.create(createPersonDto);
-
-    return createPersonDto;
   }
 
   findAll() {
@@ -46,7 +44,6 @@ export class PersonService {
     return `todos os dados apagados`;
   }
 
-
   relationship(relationshipDto: CreateRelationshipDto) {
     const {cpf1, cpf2} = relationshipDto;
     const person1 = this.personRepository.findOne(cpf1);
@@ -64,8 +61,14 @@ export class PersonService {
   }
 
   recommendations(recomendationDto: CreateRecomendationDto) {
-
     const { cpf } = recomendationDto;
+
+    if(cpf.length != 11) {
+        throw new HttpException(
+            'Cpf deve conter 11 digitos',
+            HttpStatus.BAD_REQUEST
+        )
+    }
 
     this.findOne(cpf);
     const myFriends = this.myFriends(cpf)
